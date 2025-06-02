@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Form Example </title>
+  <style>
+    /* Базові стилі з шаблону */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f6fc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .avatar {
+      display: block;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+    }
+    .info {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .info p {
+      margin: 4px 0;
+    }
+    hr {
+      margin: 30px 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+
+    /* Стилі для форми */
+    form {
+      display: grid; /* Використовуємо Grid для організації полів */
+      grid-template-columns: 1fr; /* Одна колонка */
+      gap: 15px; /* Відстань між елементами форми */
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background-color: #fdfdfd;
+    }
+    .form-group {
+      margin-bottom: 5px; /* Зменшуємо відступ між групами полів */
+    }
+    label {
+      display: block; /* Кожен підпис на новому рядку */
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+      font-size: 0.95rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: calc(100% - 22px); /* Забезпечуємо повну ширину з урахуванням padding та border */
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box; /* Важливо для коректної ширини */
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #007bff; /* Зміна кольору рамки при фокусі */
+      outline: none;
+    }
+    input[type="color"] {
+        width: 60px; /* Менша ширина для поля вибору кольору */
+        height: 35px;
+        border: 1px solid #ccc;
+        padding: 2px;
+        vertical-align: middle;
+        border-radius: 6px;
+    }
+    .radio-group,
+    .checkbox-group {
+        display: flex; /* Використовуємо flexbox для вирівнювання радіо/чекбоксів */
+        flex-wrap: wrap; /* Дозволяємо переносити елементи на новий рядок */
+        gap: 15px; /* Відстань між елементами */
+        margin-top: 5px;
+    }
+    .radio-group label,
+    .checkbox-group label {
+        display: flex; /* Використовуємо flexbox для вирівнювання тексту та input */
+        align-items: center; /* Вирівнювання по центру */
+        font-weight: normal;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 8px; /* Відступ між input та текстом */
+      transform: scale(1.1); /* Збільшуємо розмір радіо/чекбоксів */
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      width: auto; /* Автоматична ширина кнопки */
+      margin: 20px auto 0; /* Центруємо кнопку */
+      display: block; /* Робимо блоковим елементом для margin: auto */
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px); /* Невеликий ефект підняття при наведенні */
+      box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+    }
+    textarea {
+      resize: vertical; /* Дозволяємо змінювати розмір textarea лише по вертикалі */
+      min-height: 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>Назва закладу освіти</h3>
+    <img src="https://api.dicebear.com/9.x/adventurer/svg?seed=Student" alt="Аватар" class="avatar">
+    <div class="info">
+      <h1>Прізвище</h1>
+      <h2>Ім'я та По батькові</h2>
+      <h3>Учень / Учениця</h3>
+      <p>Адреса закладу освіти</p>
+      <p>+38xx xxx-xx-xx</p>
+      <p><a href="#" target="_blank">Посилання на сайт закладу</a></p>
+    </div>
+    <hr>
+
+    <h2>Форма реєстрації користувача</h2>
+    <form method="post">
+      <div class="form-group">
+        <label for="firstName">Ім’я:</label>
+        <input type="text" id="firstName" name="firstName" required placeholder="Введіть ваше ім'я">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Прізвище:</label>
+        <input type="text" id="lastName" name="lastName" required placeholder="Введіть ваше прізвище">
+      </div>
+
+      <div class="form-group">
+        <label for="patronymic">По батькові:</label>
+        <input type="text" id="patronymic" name="patronymic" placeholder="Введіть по батькові (необов'язково)">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Електронна пошта (email):</label>
+        <input type="email" id="email" name="email" required placeholder="example@domain.com">
+      </div>
+
+      <div class="form-group">
+        <label for="login">Логін:</label>
+        <input type="text" id="login" name="login" required placeholder="Придумайте логін">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required placeholder="Введіть пароль">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Номер телефону:</label>
+        <input type="tel" id="phone" name="phone" placeholder="+380XXXXXXXXX">
+      </div>
+
+      <div class="form-group">
+        <label>Стать:</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="male"> Чоловіча</label>
+          <label><input type="radio" name="gender" value="female"> Жіноча</label>
+          <label><input type="radio" name="gender" value="other"> Інше</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="birthMonth">Місяць народження:</label>
+        <select id="birthMonth" name="birthMonth">
+          <option value="">Оберіть місяць</option>
+          <option value="january">Січень</option>
+          <option value="february">Лютий</option>
+          <option value="march">Березень</option>
+          <option value="april">Квітень</option>
+          <option value="may">Травень</option>
+          <option value="june">Червень</option>
+          <option value="july">Липень</option>
+          <option value="august">Серпень</option>
+          <option value="september">Вересень</option>
+          <option value="october">Жовтень</option>
+          <option value="november">Листопад</option>
+          <option value="december">Грудень</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="birthYear">Рік народження:</label>
+        <select id="birthYear" name="birthYear">
+          <option value="">Оберіть рік</option>
+          <script>
+            const currentYear = new Date().getFullYear();
+            // Генеруємо роки від поточного до 1900
+            for (let year = currentYear; year >= 1900; year--) {
+              document.write(`<option value="${year}">${year}</option>`);
+            }
+          </script>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">Дата народження:</label>
+        <input type="date" id="birthDate" name="birthDate">
+      </div>
+
+      <div class="form-group">
+        <label for="favColor">Улюблений колір:</label>
+        <input type="color" id="favColor" name="favColor" value="#007bff">
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Завантаження фотографії:</label>
+        <input type="file" id="photo" name="photo" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label>Улюблені захоплення:</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="hobby" value="music"> Музика</label>
+          <label><input type="checkbox" name="hobby" value="sport"> Спорт</label>
+          <label><input type="checkbox" name="hobby" value="books"> Книги</label>
+          <label><input type="checkbox" name="hobby" value="travel"> Подорожі</label>
+          <label><input type="checkbox" name="hobby" value="art"> Мистецтво</label>
+          <label><input type="checkbox" name="hobby" value="coding"> Програмування</label>
+          <label><input type="checkbox" name="hobby" value="cooking"> Кулінарія</label>
+          <label><input type="checkbox" name="hobby" value="gaming"> Ігри</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comments">Коментар або додаткова інформація:</label>
+        <textarea id="comments" name="comments" rows="4" placeholder="Напишіть ваші коментарі або додаткову інформацію тут..."></textarea>
+      </div>
+
+      <input type="submit" value="Відправити">
+    </form>
+  </div>
+</body>
+</html>
