@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Template Form Example </title>
+  <title>Form </title>
   <style>
-    /* Базові стилі з шаблону */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f2f6fc;
@@ -45,21 +44,20 @@
       border-top: 1px solid #ccc;
     }
 
-    /* Стилі для форми */
     form {
-      display: grid; /* Використовуємо Grid для організації полів */
-      grid-template-columns: 1fr; /* Одна колонка */
-      gap: 15px; /* Відстань між елементами форми */
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
       padding: 20px;
       border: 1px solid #e0e0e0;
       border-radius: 8px;
       background-color: #fdfdfd;
     }
     .form-group {
-      margin-bottom: 5px; /* Зменшуємо відступ між групами полів */
+      margin-bottom: 5px;
     }
     label {
-      display: block; /* Кожен підпис на новому рядку */
+      display: block;
       margin-bottom: 5px;
       font-weight: bold;
       color: #555;
@@ -72,11 +70,11 @@
     input[type="date"],
     select,
     textarea {
-      width: calc(100% - 22px); /* Забезпечуємо повну ширину з урахуванням padding та border */
+      width: calc(100% - 22px);
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      box-sizing: border-box; /* Важливо для коректної ширини */
+      box-sizing: border-box;
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
@@ -87,11 +85,11 @@
     input[type="date"]:focus,
     select:focus,
     textarea:focus {
-      border-color: #007bff; /* Зміна кольору рамки при фокусі */
+      border-color: #007bff;
       outline: none;
     }
     input[type="color"] {
-        width: 60px; /* Менша ширина для поля вибору кольору */
+        width: 60px;
         height: 35px;
         border: 1px solid #ccc;
         padding: 2px;
@@ -100,23 +98,23 @@
     }
     .radio-group,
     .checkbox-group {
-        display: flex; /* Використовуємо flexbox для вирівнювання радіо/чекбоксів */
-        flex-wrap: wrap; /* Дозволяємо переносити елементи на новий рядок */
-        gap: 15px; /* Відстань між елементами */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
         margin-top: 5px;
     }
     .radio-group label,
     .checkbox-group label {
-        display: flex; /* Використовуємо flexbox для вирівнювання тексту та input */
-        align-items: center; /* Вирівнювання по центру */
+        display: flex;
+        align-items: center;
         font-weight: normal;
         font-size: 1rem;
         cursor: pointer;
     }
     input[type="radio"],
     input[type="checkbox"] {
-      margin-right: 8px; /* Відступ між input та текстом */
-      transform: scale(1.1); /* Збільшуємо розмір радіо/чекбоксів */
+      margin-right: 8px;
+      transform: scale(1.1);
     }
     input[type="submit"] {
       background-color: #007bff;
@@ -128,18 +126,18 @@
       font-size: 1.1rem;
       font-weight: bold;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      width: auto; /* Автоматична ширина кнопки */
-      margin: 20px auto 0; /* Центруємо кнопку */
-      display: block; /* Робимо блоковим елементом для margin: auto */
+      width: auto;
+      margin: 20px auto 0;
+      display: block;
       box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
     }
     input[type="submit"]:hover {
       background-color: #0056b3;
-      transform: translateY(-2px); /* Невеликий ефект підняття при наведенні */
+      transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
     }
     textarea {
-      resize: vertical; /* Дозволяємо змінювати розмір textarea лише по вертикалі */
+      resize: vertical;
       min-height: 80px;
     }
   </style>
@@ -229,7 +227,6 @@
           <option value="">Оберіть рік</option>
           <script>
             const currentYear = new Date().getFullYear();
-            // Генеруємо роки від поточного до 1900
             for (let year = currentYear; year >= 1900; year--) {
               document.write(`<option value="${year}">${year}</option>`);
             }
